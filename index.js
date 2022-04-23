@@ -202,10 +202,9 @@ function promptUser() {
 
       //code for creating the README file layout with user input.
       const README = `
-# ${answers.Title}
+<h1 align="center">${answers.Title}</h1>
 
-//img license here//
-<img id="image" src=" " alt=" " width ="50px" height= "50px"> </img>
+![badge](https://img.shields.io/badge/license-${answers.license}-brightgreen)
 
 ## Table of Contents
 
@@ -217,7 +216,7 @@ function promptUser() {
 
 <a href="#contribute">4.Contributing </a>
 
-<a href="#license">5.License </a> //Add license badges and description on select.
+<a href="#license">5.License </a> 
 
 <a href="#test">6.Tests </a>
 
@@ -239,10 +238,8 @@ ${answers.description}
 
  ${answers.futureDevelopment}.
 
-Check out the Project here!
+
 ${answers.link}
-
-
 
 <h2 id="install">Installation</h2>
 
