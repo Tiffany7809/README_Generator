@@ -188,6 +188,7 @@ function promptUser() {
 
     let LicensingDescription = [MITdescription,ApacheDescription,GNUdescription,Unlicensed,ZeroClause]
 
+    //code for creating the README file layout with user input.
       const README = `
 # ${answers.Title}
 
@@ -261,8 +262,8 @@ ${LicensingDescription[0]}  //figure out how to link selected license
 
 
 `;
-
-      fs.writeFile("readme.md", README, function (err) {
+//function to create README.md
+      fs.writeFile("professionalReadme.md", README, function (err) {
         err ? console.error(err) : console.log("success!");
       });
     });
