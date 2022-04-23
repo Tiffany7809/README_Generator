@@ -1,0 +1,21 @@
+{
+  "name": "readme_generator",
+  "version": "1.0.0",
+  "description": "A Readme Generator ",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Tiffany7809"
+  },
+  "keywords": [
+    "README"
+  ],
+  "author": "Tiffany Dempsey",
+  "license": "MIT",
+  "dependencies": {
+    "inquirer": "^8.2.2"
+  }
+}
