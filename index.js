@@ -1,8 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const util = require("util");
+// const util = require("util");
 // const generateReadme = require("./utils/generateReadme")
-
 
 // creating prompted questions in comand line
 function promptUser() {
@@ -10,14 +9,14 @@ function promptUser() {
     .prompt([
       //asking questions with user input
       {
-          type: "input",
-          name: "userName",
-          message: "What is your name?"
+        type: "input",
+        name: "userName",
+        message: "What is your name?",
       },
       {
-          type: "input",
-          name: "year",
-          message: "What year was this project licensed?"
+        type: "input",
+        name: "year",
+        message: "What year was this project licensed?",
       },
       {
         type: "input",
@@ -82,12 +81,17 @@ function promptUser() {
         name: "contribute",
         message: "How can other developers contribute to your project?",
       },
+      {
+        type: "input",
+        name: "test",
+        message: "What are the steps to test this application?"
+      },
 
       {
         type: "list",
         name: "license",
         message: "Choose the license you wish to add to your project",
-        choices: ["Apache", "Zero-Clause BSD", "GNU", "MIT","Unlicensed"],
+        choices: ["Apache", "Zero-Clause BSD", "GNU", "MIT", "Unlicensed"],
       },
       {
         type: "input",
@@ -111,8 +115,8 @@ function promptUser() {
     .then(function (answers) {
       console.log(answers);
 
-    //Adding License Img and Description
-    const MITdescription =`
+      //Adding License Img and Description
+      const MITdescription = `
     Copyright ${answers.userName} ${answers.year}
 
     Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation 
@@ -126,8 +130,9 @@ function promptUser() {
     IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
     OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-    `
-    const ApacheDescription = `copyright 
+    `;
+      const ApacheDescription = `
+    copyright ${answers.userName} ${answers.year} 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
@@ -138,9 +143,10 @@ function promptUser() {
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
-    limitations under the License.`
+    limitations under the License.`;
 
-    const GNUdescription = `Copyright (C) <year>  <name of author>
+      const GNUdescription = `
+    Copyright (C) ${answers.userName} ${answers.year}
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -153,9 +159,10 @@ function promptUser() {
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.`
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.`;
 
-    const ZeroClause = `Permission to use, copy, modify, 
+      const ZeroClause = `
+    Permission to use, copy, modify, 
     and/or distribute this software for any purpose with or without fee 
     is hereby granted.
 
@@ -164,31 +171,36 @@ function promptUser() {
     IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, 
     OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER 
     RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, 
-    NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.`
+    NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.`;
 
+      const Unlicensed = `This Project is unlicensed.`;
 
-    const Unlicensed = `This Project is unlicensed.`
-    
-    if (answers.license === "MIT"){
-        console.log(MITdescription)
-        
+      let LicensingDescription = [
+        MITdescription,
+        ApacheDescription,
+        GNUdescription,
+        Unlicensed,
+        ZeroClause,
+      ];
+      let selected = "";
+      if (answers.license === "MIT") {
+        selected = LicensingDescription[0];
+        console.log(selected);
+      } else if (answers.license === "Apache") {
+        selected = LicensingDescription[1];
+        console.log(selected);
+      } else if (answers.license === "GNU") {
+        selected = LicensingDescription[2];
+        console.log(selected);
+      } else if (answers.license === "Zero-Clause BSD") {
+        selected = LicensingDescription[4];
+        console.log(selected);
+      } else {
+        selected = LicensingDescription[3];
+        console.log(selected);
+      }
 
-    } else if (answers.license === "Apache") {
-        console.log(ApacheDescription)
-
-    } else if (answers.license === "GNU") {
-        console.log(GNUdescription)
-
-    } else if (answers.license === "Zero-Clause BSD"){
-        console.log(ZeroClause)
-
-    } else {
-        console.log(Unlicensed)
-    };
-
-    let LicensingDescription = [MITdescription,ApacheDescription,GNUdescription,Unlicensed,ZeroClause]
-
-    //code for creating the README file layout with user input.
+      //code for creating the README file layout with user input.
       const README = `
 # ${answers.Title}
 
@@ -246,6 +258,8 @@ ${answers.contribute}
 
 <h2 id="test"> Tests </h2>
 
+${answers.test}
+
 
 <h2 id="questions">Questions</h2>
 
@@ -257,12 +271,12 @@ Or reach out to me via GitHub
 
 <h2 id="license">License</h2>
 ${answers.license}
-${LicensingDescription[0]}  //figure out how to link selected license
+${selected}
 
 
 
 `;
-//function to create README.md
+      //function to create README.md
       fs.writeFile("professionalReadme.md", README, function (err) {
         err ? console.error(err) : console.log("success!");
       });

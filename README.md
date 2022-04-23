@@ -31,10 +31,10 @@ This allows users to spend more time on their code, and less time on creating a 
 <h2 id="install">Installation</h2>
 To install this application:
 
-1
-2
-3
-4
+1.
+2.
+3.
+4.
 
 <h2 id="use">Usage</h2>
 Here is a Video of how to use this program: 
