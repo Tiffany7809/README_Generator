@@ -31,21 +31,23 @@ This allows users to spend more time on their code, and less time on creating a 
 <h2 id="install">Installation</h2>
 To install this application:
 
-1.
-2.
-3.
-4.
+1. Download Node.js
+2. Download this module
+3. In the cmd line, navigate to the root directory and run "npm init"
+4. Then run "npm i" to install the inquirer
 
 <h2 id="use">Usage</h2>
+To use this application navigate to the root directory in the module, then run node index.js to begin the Questions.
+Answer the questions with detailed answers and when completed your answers will be output into a README document.
+
+<img src="ReadmeStep1.png" alt="picture of program being initiated" width="500px"></img> 
+
+<img src="READMEuserResponses.png" alt="the users responses" width="500px"></img>
+
+
 Here is a Video of how to use this program: 
 
 
-    
-<h2 id="contribute">Contributing</h2>
-
-
-
-<h2 id="test"> Tests </h2>
 
 
 <h2 id="questions">Questions</h2>

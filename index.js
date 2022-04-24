@@ -203,6 +203,7 @@ function promptUser() {
       //code for creating the README file layout with user input.
       const README = `
 <h1 align="center">${answers.Title}</h1>
+***
 
 ![badge](https://img.shields.io/badge/license-${answers.license}-brightgreen)
 
@@ -221,7 +222,7 @@ function promptUser() {
 <a href="#test">6.Tests </a>
 
 <a href="#questions">7.Questions </a>
-
+***
 
 
 <h2 id="describe">Description</h2>
@@ -240,22 +241,27 @@ ${answers.description}
 
 
 ${answers.link}
+***
 
 <h2 id="install">Installation</h2>
 
 ${answers.installation}
+***
 
 <h2 id="use">Usage</h2>
 
 ${answers.usage}
+***
     
 <h2 id="contribute">Contributing</h2>
 
 ${answers.contribute}
+***
 
 <h2 id="test"> Tests </h2>
 
 ${answers.test}
+***
 
 
 <h2 id="questions">Questions</h2>
@@ -265,13 +271,15 @@ Or reach out to me via GitHub
  ${answers.GitHubUser}
  ${answers.GitHubLink}
 
+ ***
+
 
 <h2 id="license">License</h2>
 ${answers.license}
 ${selected}
 
 
-
+***
 `;
       //function to create README.md
       fs.writeFile("professionalReadme.md", README, function (err) {
