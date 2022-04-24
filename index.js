@@ -202,85 +202,86 @@ function promptUser() {
 
       //code for creating the README file layout with user input.
       const README = `
-<h1 align="center">${answers.Title}</h1>
-***
 
-![badge](https://img.shields.io/badge/license-${answers.license}-brightgreen)
+  <h1 align="center">${answers.Title}</h1>
+  
+  ![badge](https://img.shields.io/badge/license-${answers.license}-brightgreen)
+  ***
 
-## Table of Contents
+  ## Table of Contents
 
-<a href="#description">1.Description </a>
+  <a href="#description">1.Description </a>
 
-<a href="#install">2.Installation </a>
+  <a href="#install">2.Installation </a>
 
-<a href="#use">3.Usage </a>
+  <a href="#use">3.Usage </a>
 
-<a href="#contribute">4.Contributing </a>
+  <a href="#contribute">4.Contributing </a>
 
-<a href="#license">5.License </a> 
+  <a href="#license">5.License </a> 
 
-<a href="#test">6.Tests </a>
+  <a href="#test">6.Tests </a>
 
-<a href="#questions">7.Questions </a>
-***
-
-
-<h2 id="describe">Description</h2>
-
-${answers.description}
-
- ${answers.Motivation}. 
-
- ${answers.whatProblem}.
-
- ${answers.learn}.
-
- ${answers.challenges}.
-
- ${answers.futureDevelopment}.
+  <a href="#questions">7.Questions </a>
+  ***
 
 
-${answers.link}
-***
+  <h2 id="describe">Description</h2>
 
-<h2 id="install">Installation</h2>
+  ${answers.description}
 
-${answers.installation}
-***
+  ${answers.Motivation}. 
 
-<h2 id="use">Usage</h2>
+  ${answers.whatProblem}.
 
-${answers.usage}
-***
-    
-<h2 id="contribute">Contributing</h2>
+  ${answers.learn}.
 
-${answers.contribute}
-***
+  ${answers.challenges}.
 
-<h2 id="test"> Tests </h2>
-
-${answers.test}
-***
+  ${answers.futureDevelopment}.
 
 
-<h2 id="questions">Questions</h2>
+  ${answers.link}
+  ***
 
-If you have any questions, please feel free to E-mail me at ${answers.Email}
-Or reach out to me via GitHub
- ${answers.GitHubUser}
- ${answers.GitHubLink}
+  <h2 id="install">Installation</h2>
 
- ***
+  ${answers.installation}
+  ***
+
+  <h2 id="use">Usage</h2>
+
+  ${answers.usage}
+  ***
+      
+  <h2 id="contribute">Contributing</h2>
+
+  ${answers.contribute}
+  ***
+
+  <h2 id="test"> Tests </h2>
+
+  ${answers.test}
+  ***
 
 
-<h2 id="license">License</h2>
-${answers.license}
-${selected}
+  <h2 id="questions">Questions</h2>
+
+  If you have any questions, please feel free to E-mail me at ${answers.Email}
+  Or reach out to me via GitHub
+  ${answers.GitHubUser}
+  ${answers.GitHubLink}
+
+  ***
 
 
-***
-`;
+  <h2 id="license">License</h2>
+  ${answers.license}
+  ${selected}
+
+
+  ***
+  `;
       //function to create README.md
       fs.writeFile("professionalReadme.md", README, function (err) {
         err ? console.error(err) : console.log("success!");
