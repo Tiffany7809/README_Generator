@@ -42,13 +42,14 @@ To install this application:
 To use this application navigate to the root directory in the module, then run node index.js to begin the Questions.
 Answer the questions with detailed answers and when completed your answers will be output into a README document.
 
-<img src="ReadmeStep1.png" alt="picture of program being initiated" width="500px"></img> 
+<img src="./utils/ReadmeStep1.png" alt="picture of program being initiated" width="500px"></img> 
 
-<img src="READMEuserResponses.png" alt="the users responses" width="500px"></img>
+<img src="./utils/READMEuserResponses.png" alt="the users responses" width="500px"></img>
 
 
 Here is a Video of how to use this program: 
 
+<video src="./utils/ExampleVideo.webm" controls width="800px"></video>
 
 
 ***
